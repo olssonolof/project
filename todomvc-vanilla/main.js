@@ -1,11 +1,13 @@
 const toggleAll = document.querySelector("#toggleall");
 const list = document.querySelector("#todoList");
+const markAll = document.querySelector("#markAll");
 
 toggleAll.addEventListener("keypress", function(e) {
   let key = e.charCode;
   if (key === 13) {
     let test = toggleAll.value;
     createListItem();
+    showMarkAll();
   }
 });
 
@@ -29,3 +31,12 @@ const createListItem = () => {
     input.hidden = false;
   });
 };
+
+const showMarkAll = () => {
+  if (list.childElementCount > 0) {
+    markAll.hidden = false;
+  } else {
+    markAll.hidden = true;
+  }
+};
+showMarkAll();
