@@ -17,10 +17,15 @@ const createListItem = () => {
   div.appendChild(input);
   let label = document.createElement("label");
   div.appendChild(label);
-  label.textContent = toggleAll.value;
+  input.hidden = true;
+  label.innerText = toggleAll.value;
+  input.value = toggleAll.value;
+  toggleAll.value = "";
   let button = document.createElement("button");
   div.appendChild(button);
   list.appendChild(node);
-  console.log("let node" + node);
-  console.log("let todolist" + list);
+  node.addEventListener("dblclick", () => {
+    label.hidden = true;
+    input.hidden = false;
+  });
 };
