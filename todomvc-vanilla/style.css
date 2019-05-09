@@ -77,17 +77,18 @@ i {
     width: 500px;
 }
 
-.listitem-container input{
-    flex: 1;
+.listitem-container input{ /* Check knappen åt vänster */ 
+
 }
 
 .listitem-container{ /* <Li> som wrappar ListItem */
     display: flex;
     flex-direction: row;
+    border: 1px solid #f1f1f1;
 }
 
-.listitem-container label{ /* TEXT (label) */ 
-    flex: 1;
+.listitem-container label{ /* TEXT (label) mitten */ 
+    margin-right: auto;
 }
 
 .listitem-container button{ /* Deleteknapp längst åt höger */
