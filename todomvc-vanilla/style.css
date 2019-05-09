@@ -1,71 +1,66 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color:#f5f5f5;
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #f5f5f5;
 }
-
 
 section {
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    align-items: center;
-    flex-direction: column;
-    width: 500px;
-    background-color:
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  flex-direction: column;
+  width: 500px;
 }
 
-header h1{
-    font-size: 100px;
-    color: rgba(175, 47, 47, 0.15);
-    font-weight: 100;
+header h1 {
+  font-size: 100px;
+  color: rgba(175, 47, 47, 0.15);
+  font-weight: 100;
 }
 
-.container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: solid 1px black;
-    background: white;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid 1px black;
+  background: white;
 }
 
-.input-container{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    padding: 10px;
+.input-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
 }
 
 /* .input-container label{
     flex: 1;
 } */
 
-.input-container input::placeholder{
-    color:lightgray;
+.input-container input::placeholder {
+  color: lightgray;
 }
 
 i {
-    color: lightgray;
-    padding: 10px;
+  color: lightgray;
+  padding: 10px;
 }
 
-.input-container input{
-    flex: 1;
-    font-size: 20px;
-    border: none;
-
+.input-container input {
+  flex: 1;
+  font-size: 20px;
+  border: none;
 }
 
-#todoList{
-    display: flex;
-    flex-direction: row;
-    list-style: none;
+#todoList {
+  list-style: none;
 }
-
-
-
+.listitemchecked {
+  text-decoration-line: line-through;
+}
