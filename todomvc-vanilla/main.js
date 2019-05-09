@@ -14,25 +14,24 @@ toggleAll.addEventListener("keypress", function(e) {
 const createListItem = () => {
   let node = document.createElement("li");
 
-  let div = document.createElement("div");
-  div.classList = "listitem-container";
-  node.appendChild(div);
+  node.classList = "listitem-container";
 
   let input = document.createElement("input");
   input.type = "checkbox";
-  div.appendChild(input);
+  node.appendChild(input);
 
   let label = document.createElement("label");
-  div.appendChild(label);
+  node.appendChild(label);
   label.innerText = toggleAll.value;
-  label.classList = "listitem";
   toggleAll.value = "";
 
   let button = document.createElement("button");
+  button.innerText = "x";
+
   input.addEventListener("click", () => {
     isChecked(input.checked, label);
   });
-  div.appendChild(button);
+  node.appendChild(button);
   list.appendChild(node);
 };
 
