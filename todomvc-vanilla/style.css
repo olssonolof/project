@@ -42,7 +42,7 @@ header h1{
 
 i {
     color: lightgray;
-    
+    padding: 10px;
 }
 
 .input-container input{
