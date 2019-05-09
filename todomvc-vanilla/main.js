@@ -15,7 +15,7 @@ const createListItem = () => {
   let node = document.createElement("li");
 
   let div = document.createElement("div");
-  div.classList("listitem-container");
+  div.classList = "listitem-container";
   node.appendChild(div);
 
   let input = document.createElement("input");
