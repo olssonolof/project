@@ -1,2 +1,2 @@
-##[TodoMVC](www.todomvc.com) clone for school work
+## [TodoMVC](http://www.todomvc.com) clone for school work
 
