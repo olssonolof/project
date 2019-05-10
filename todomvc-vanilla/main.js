@@ -1,6 +1,11 @@
 const toggleAll = document.querySelector("#toggleall");
 const list = document.querySelector("#todoList");
 const markAll = document.querySelector("#markAll");
+const markAllIcon = document.querySelector("#markAll i");
+
+markAllIcon.addEventListener("click", () => {
+  selectAllTodo();
+});
 
 toggleAll.addEventListener("keypress", function(e) {
   let key = e.charCode;
@@ -12,6 +17,51 @@ toggleAll.addEventListener("keypress", function(e) {
     }
   }
 });
+
+const isChecked = (checker, label) => {
+  if (checker.classList.value.includes("hidden")) {
+    label.classList = "listitemchecked";
+    checker.classList.remove("hidden");
+  } else {
+    checker.classList.add("hidden");
+    label.classList.remove("listitemchecked");
+  }
+};
+
+const showMarkAll = () => {
+  if (list.childElementCount > 0) {
+    markAll.hidden = false;
+    markAllIcon;
+  } else {
+    markAll.hidden = true;
+  }
+};
+
+const editToDoText = (todo, listitem) => {
+  todo.contentEditable = true;
+  listitem.classList.add("todo-edit");
+};
+
+const deleteToDo = todo => {
+  list.removeChild(todo);
+  showMarkAll();
+};
+
+const selectAllTodo = () => {
+  let node = document.querySelectorAll(".listitem-container");
+  let allTodo = document.querySelectorAll(".fas.fa-check.hidden");
+  if (allTodo.length != 0) {
+    //allTodo.forEach(x => x.classList.remove("hidden"));
+    node.forEach(x =>
+      isChecked(x => isChecked(x.firstChild.firstChild, x.children[1]))
+    );
+  } else {
+    // allTodo = document.querySelectorAll(".fas.fa-check");
+    // allTodo.forEach(x => x.classList.add("hidden"));
+  }
+};
+
+showMarkAll();
 
 const createListItem = () => {
   let node = document.createElement("li");
@@ -61,32 +111,3 @@ const createListItem = () => {
   node.appendChild(button);
   list.appendChild(node);
 };
-
-const isChecked = (checker, label) => {
-  if (checker.classList.value.includes("hidden")) {
-    label.classList = "listitemchecked";
-    checker.classList.remove("hidden");
-  } else {
-    checker.classList.add("hidden");
-    label.classList.remove("listitemchecked");
-  }
-};
-
-const showMarkAll = () => {
-  if (list.childElementCount > 0) {
-    markAll.hidden = false;
-  } else {
-    markAll.hidden = true;
-  }
-};
-
-const editToDoText = (todo, listitem) => {
-  todo.contentEditable = true;
-  listitem.classList.add("todo-edit");
-};
-
-const deleteToDo = todo => {
-  list.removeChild(todo);
-};
-
-showMarkAll();
