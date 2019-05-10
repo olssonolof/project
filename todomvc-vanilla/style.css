@@ -35,30 +35,35 @@ header h1 {
   width: 100%;
   display: flex;
   flex-direction: row;
-  padding: 10px;
 }
 
-.input-container input:focus{
-    outline: none;
+.input-container input:focus {
+  outline: none;
 }
-
+.markall-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
 /* .input-container label{
     flex: 1;
 } */
 
 .input-container input::placeholder {
   color: lightgray;
+  font-style: italic;
 }
 
 i {
   color: lightgray;
-  padding: 10px;
 }
 
 .input-container input {
-  flex: 1;
+  flex: 10;
   font-size: 20px;
   border: none;
+  padding: 0.7em;
 }
 
 #todoList {
@@ -67,32 +72,57 @@ i {
 
 .listitemchecked {
   text-decoration-line: line-through;
+  color: #a8a8a8;
 }
 
-.list-section{
-    margin-left: auto;
-    margin-right: auto;
-    align-items: center;
-    flex-direction: column;
-    width: 500px;
+.list-section {
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  flex-direction: column;
+  width: 500px;
 }
 
-.listitem-container input{ /* Check knappen åt vänster */ 
-
+.listitem-container {
+  /* <Li> som wrappar ListItem */
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.listitem-container{ /* <Li> som wrappar ListItem */
-    display: flex;
-    flex-direction: row;
-    border: 1px solid #f1f1f1;
+.listitem-container div {
+  /* Check knappen åt vänster */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: solid 0.5px #a8a8a8;
+  border-radius: 50%;
+  margin: 10px;
+  user-select: none;
+  outline: none;
 }
 
-.listitem-container label{ /* TEXT (label) mitten */ 
-    margin-right: auto;
+.listitem-container div i {
+  color: lightgreen;
+}
+.listitem-container label {
+  /* TEXT (label) mitten */
+  margin-right: auto;
+  font-size: 20px;
+
+  padding: 0.7em;
 }
 
-.listitem-container button{ /* Deleteknapp längst åt höger */
-    background-color: lightblue;
+.listitem-container button {
+  /* Deleteknapp längst åt höger */
+  background-color: lightblue;
 }
 
-
+.hidden {
+  visibility: hidden;
+}

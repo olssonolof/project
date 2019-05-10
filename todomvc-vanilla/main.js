@@ -16,29 +16,36 @@ const createListItem = () => {
 
   node.classList = "listitem-container";
 
-  let input = document.createElement("input");
-  input.type = "checkbox";
-  node.appendChild(input);
+  let div = document.createElement("div");
+  node.appendChild(div);
+
+  let checker = document.createElement("i");
+  checker.classList = "fas fa-check";
+  checker.classList.add("hidden");
+  div.appendChild(checker);
 
   let label = document.createElement("label");
   node.appendChild(label);
+
   label.innerText = toggleAll.value;
   toggleAll.value = "";
 
   let button = document.createElement("button");
   button.innerText = "x";
 
-  input.addEventListener("click", () => {
-    isChecked(input.checked, label);
+  div.addEventListener("click", () => {
+    isChecked(checker, label);
   });
   node.appendChild(button);
   list.appendChild(node);
 };
 
-const isChecked = (value, label) => {
-  if (value === true) {
+const isChecked = (checker, label) => {
+  if (checker.classList.value.includes("hidden")) {
     label.classList = "listitemchecked";
+    checker.classList.remove("hidden");
   } else {
+    checker.classList.add("hidden");
     label.classList.remove("listitemchecked");
   }
 };
