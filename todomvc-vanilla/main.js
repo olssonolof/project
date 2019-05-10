@@ -33,8 +33,12 @@ const createListItem = () => {
   label.type = "submit";
 
   label.addEventListener("focusout", () => {
-    label.contentEditable = false;
-    node.classList.remove("todo-edit");
+    if (label.innerText === "") {
+      deleteToDo(node);
+    } else {
+      label.contentEditable = false;
+      node.classList.remove("todo-edit");
+    }
   });
 
   node.appendChild(label);
@@ -45,9 +49,11 @@ const createListItem = () => {
   let button = document.createElement("button");
   let icon = document.createElement("i");
   icon.classList = "fas fa-times fa-2x";
+  icon.addEventListener("click", () => {
+    deleteToDo(node);
+  });
+
   button.appendChild(icon);
-
-
 
   div.addEventListener("click", () => {
     isChecked(checker, label);
@@ -77,6 +83,10 @@ const showMarkAll = () => {
 const editToDoText = (todo, listitem) => {
   todo.contentEditable = true;
   listitem.classList.add("todo-edit");
+};
+
+const deleteToDo = todo => {
+  list.removeChild(todo);
 };
 
 showMarkAll();
