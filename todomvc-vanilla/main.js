@@ -4,10 +4,12 @@ const markAll = document.querySelector("#markAll");
 
 toggleAll.addEventListener("keypress", function(e) {
   let key = e.charCode;
-  if (key === 13) {
-    let test = toggleAll.value;
-    createListItem();
-    showMarkAll();
+  if (toggleAll.value.length != 0) {
+    if (key === 13) {
+      let test = toggleAll.value;
+      createListItem();
+      showMarkAll();
+    }
   }
 });
 
@@ -25,6 +27,16 @@ const createListItem = () => {
   div.appendChild(checker);
 
   let label = document.createElement("label");
+  label.addEventListener("dblclick", () => {
+    editToDoText(label, node);
+  });
+  label.type = "submit";
+
+  label.addEventListener("focusout", () => {
+    label.contentEditable = false;
+    node.classList.remove("todo-edit");
+  });
+
   node.appendChild(label);
 
   label.innerText = toggleAll.value;
@@ -57,4 +69,10 @@ const showMarkAll = () => {
     markAll.hidden = true;
   }
 };
+
+const editToDoText = (todo, listitem) => {
+  todo.contentEditable = true;
+  listitem.classList.add("todo-edit");
+};
+
 showMarkAll();

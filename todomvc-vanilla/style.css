@@ -92,6 +92,9 @@ i {
   align-items: center;
   justify-content: center;
 }
+.listitem-container:hover button {
+  visibility: visible;
+}
 
 .listitem-container div {
   /* Check knappen åt vänster */
@@ -114,15 +117,18 @@ i {
   /* TEXT (label) mitten */
   margin-right: auto;
   font-size: 20px;
-
   padding: 0.7em;
 }
 
 .listitem-container button {
   /* Deleteknapp längst åt höger */
   background-color: lightblue;
+  visibility: hidden;
 }
 
 .hidden {
   visibility: hidden;
+}
+
+.todo-edit {
 }
