@@ -43,7 +43,11 @@ const createListItem = () => {
   toggleAll.value = "";
 
   let button = document.createElement("button");
-  button.innerText = "x";
+  let icon = document.createElement("i");
+  icon.classList = "fas fa-times fa-2x";
+  button.appendChild(icon);
+
+
 
   div.addEventListener("click", () => {
     isChecked(checker, label);
