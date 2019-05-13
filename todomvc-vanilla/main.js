@@ -33,6 +33,13 @@ const isChecked = listItem => {
 const showMarkAll = () => {
   let allTodoDone = document.querySelectorAll(".fas.fa-check:not(.hidden)");
   let allTodo = document.querySelectorAll(".listitem-container");
+  let counterElement = document.querySelector("#counter");
+  if (allTodo.length - allTodoDone.length === 1) {
+    counterElement.innerText = "1 item left";
+  } else {
+    counterElement.innerText = `${allTodo.length -
+      allTodoDone.length} items left`;
+  }
 
   if (list.childElementCount > 0) {
     markAll.hidden = false;
