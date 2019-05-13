@@ -33,10 +33,10 @@ const isChecked = listItem => {
 const showMarkAll = () => {
   let allTodoDone = document.querySelectorAll(".fas.fa-check:not(.hidden)");
   let allTodo = document.querySelectorAll(".listitem-container");
-  let counterElement = document.querySelector("#counter");
+  let counterElement = document.querySelector("#footer-counter");
   if (allTodo.length - allTodoDone.length === 1) {
     counterElement.innerText = "1 item left";
-  } else {
+  } else if (allTodo.length !== 0) {
     counterElement.innerText = `${allTodo.length -
       allTodoDone.length} items left`;
   }
