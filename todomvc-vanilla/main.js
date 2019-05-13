@@ -18,7 +18,9 @@ toggleAll.addEventListener("keypress", function(e) {
   }
 });
 
-const isChecked = (checker, label) => {
+const isChecked = listItem => {
+  let checker = listItem.children[0].firstChild;
+  let label = listItem.children[1];
   if (checker.classList.value.includes("hidden")) {
     label.classList = "listitemchecked";
     checker.classList.remove("hidden");
@@ -53,12 +55,12 @@ const selectAllTodo = () => {
   if (allTodo.length != 0) {
     node.forEach(x => {
       if (x.firstChild.firstChild.classList.value.includes("hidden")) {
-        isChecked(x.firstChild.firstChild, x.children[1]);
+        isChecked(x);
       }
     });
   } else {
     node.forEach(x => {
-      isChecked(x.firstChild.firstChild, x.children[1]);
+      isChecked(x);
     });
   }
   showMarkAll();
@@ -109,7 +111,7 @@ const createListItem = () => {
   button.appendChild(icon);
 
   div.addEventListener("click", () => {
-    isChecked(checker, label);
+    isChecked(node);
   });
   node.appendChild(button);
   list.appendChild(node);
