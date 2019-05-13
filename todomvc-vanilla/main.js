@@ -36,7 +36,7 @@ const showMarkAll = () => {
   let counterElement = document.querySelector("#footer-counter");
   if (allTodo.length - allTodoDone.length === 1) {
     counterElement.innerText = "1 item left";
-  } else if (allTodo.length !== 0) {
+  } else {
     counterElement.innerText = `${allTodo.length -
       allTodoDone.length} items left`;
   }
