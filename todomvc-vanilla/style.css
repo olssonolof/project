@@ -172,6 +172,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 8px;
 }
 .footer-list li a {
   text-decoration: none;
@@ -179,25 +180,34 @@ footer {
 }
 
 #footer-counter{
-  flex: 6;
+  flex: 1;
+  margin-right: auto;
   color: #707070;
+  padding-left: 8px;
+}
+
+#footer-clear{
+  padding-right: 8px;
+}
+
+#footer-second-list{
+  display: flex;
+  list-style: none;
+  flex: 1.5;
 }
 
 #footer-all{
-  flex: 1;
+  flex: 1.5;
 }
 
 #footer-active{
-  flex: 1;
+  flex: 2;
 }
 
 #footer-completed{
   flex: 6;
 }
 
-#footer-clear{
-  flex: 3;
-}
 
 
 
