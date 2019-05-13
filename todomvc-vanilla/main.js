@@ -51,14 +51,17 @@ const selectAllTodo = () => {
   let node = document.querySelectorAll(".listitem-container");
   let allTodo = document.querySelectorAll(".fas.fa-check.hidden");
   if (allTodo.length != 0) {
-    //allTodo.forEach(x => x.classList.remove("hidden"));
-    node.forEach(x =>
-      isChecked(x => isChecked(x.firstChild.firstChild, x.children[1]))
-    );
+    node.forEach(x => {
+      if (x.firstChild.firstChild.classList.value.includes("hidden")) {
+        isChecked(x.firstChild.firstChild, x.children[1]);
+      }
+    });
   } else {
-    // allTodo = document.querySelectorAll(".fas.fa-check");
-    // allTodo.forEach(x => x.classList.add("hidden"));
+    node.forEach(x => {
+      isChecked(x.firstChild.firstChild, x.children[1]);
+    });
   }
+  showMarkAll();
 };
 
 showMarkAll();
