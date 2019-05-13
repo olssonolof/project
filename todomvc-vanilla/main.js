@@ -11,7 +11,6 @@ toggleAll.addEventListener("keypress", function(e) {
   let key = e.charCode;
   if (toggleAll.value.length != 0) {
     if (key === 13) {
-      let test = toggleAll.value;
       createListItem();
       showMarkAll();
     }
@@ -50,7 +49,9 @@ const showMarkAll = () => {
 
 const editToDoText = (todo, listitem) => {
   todo.contentEditable = true;
-  listitem.classList.add("todo-edit");
+  todo.classList.add("todo-edit");
+  let button = todo.parentElement.lastChild;
+  button.classList.add("z-index");
 };
 
 const deleteToDo = todo => {
@@ -94,7 +95,7 @@ const createListItem = () => {
   label.addEventListener("dblclick", () => {
     editToDoText(label, node);
   });
-  label.type = "submit";
+  label.id = "todo-label";
 
   label.addEventListener("focusout", () => {
     if (label.innerText === "") {
@@ -103,6 +104,7 @@ const createListItem = () => {
       label.contentEditable = false;
       node.classList.remove("todo-edit");
     }
+    button.classList.remove("z-index");
   });
 
   node.appendChild(label);
@@ -111,8 +113,10 @@ const createListItem = () => {
   toggleAll.value = "";
 
   let button = document.createElement("button");
+  button.id = "deleteButton";
   let icon = document.createElement("i");
   icon.classList = "fas fa-times fa-2x";
+
   icon.addEventListener("click", () => {
     deleteToDo(node);
   });
