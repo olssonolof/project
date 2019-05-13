@@ -53,6 +53,10 @@ header h1 {
   flex: 1;
 }
 
+.dark-arrow {
+  color: black;
+}
+
 /* .input-container label{
     flex: 1;
 } */

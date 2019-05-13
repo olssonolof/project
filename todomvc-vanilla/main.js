@@ -28,12 +28,21 @@ const isChecked = listItem => {
     checker.classList.add("hidden");
     label.classList.remove("listitemchecked");
   }
+  showMarkAll();
 };
 
 const showMarkAll = () => {
+  let allTodoDone = document.querySelectorAll(".fas.fa-check:not(.hidden)");
+  let allTodo = document.querySelectorAll(".listitem-container");
+
   if (list.childElementCount > 0) {
     markAll.hidden = false;
     markAllIcon;
+    if (allTodoDone.length === allTodo.length) {
+      markAllIcon.classList.add("dark-arrow");
+    } else {
+      markAllIcon.classList.remove("dark-arrow");
+    }
   } else {
     markAll.hidden = true;
   }
