@@ -10,6 +10,13 @@ markAllIcon.addEventListener("click", () => {
   selectAllTodo();
 });
 
+toggleAll.addEventListener("focusout", () => {
+  if (toggleAll.value.length != 0) {
+    createListItem();
+    showMarkAll();
+  }
+});
+
 toggleAll.addEventListener("keypress", function(e) {
   let key = e.charCode;
   if (toggleAll.value.length != 0) {
@@ -79,14 +86,22 @@ const showMarkAll = () => {
 
 const editToDoText = todo => {
   todo.contentEditable = true;
+  todo.addEventListener("keypress", e => {
+    key = e.charCode;
+    if (key === 13) {
+      todoEditDone(todo.parentElement);
+    }
+  });
   todo.classList.add("todo-edit");
   let button = todo.parentElement.lastChild;
   button.classList.add("z-index");
 };
 
 const deleteToDo = todo => {
-  list.removeChild(todo);
-  showMarkAll();
+  if (list.contains(todo)) {
+    list.removeChild(todo);
+    showMarkAll();
+  }
 };
 
 const selectAllTodo = () => {
@@ -128,13 +143,7 @@ const createListItem = () => {
   label.id = "todo-label";
 
   label.addEventListener("focusout", () => {
-    if (label.innerText === "") {
-      deleteToDo(node);
-    } else {
-      label.contentEditable = false;
-      label.classList.remove("todo-edit");
-    }
-    button.classList.remove("z-index");
+    todoEditDone(node);
   });
 
   node.appendChild(label);
@@ -158,4 +167,16 @@ const createListItem = () => {
   });
   node.appendChild(button);
   list.appendChild(node);
+};
+
+const todoEditDone = node => {
+  let label = node.children[1];
+  let button = node.children[2];
+  if (label.innerText === "") {
+    deleteToDo(node);
+  } else {
+    label.contentEditable = false;
+    label.classList.remove("todo-edit");
+  }
+  button.classList.remove("z-index");
 };
