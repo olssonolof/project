@@ -167,11 +167,38 @@ footer {
 }
 
 .footer-list {
-  font-size: 0.7em;
+  font-size: 0.8em;
   list-style: none;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .footer-list li a {
-  color: #707070;
   text-decoration: none;
+  color: #707070;
 }
+
+#footer-counter{
+  flex: 6;
+  color: #707070;
+}
+
+#footer-all{
+  flex: 1;
+}
+
+#footer-active{
+  flex: 1;
+}
+
+#footer-completed{
+  flex: 6;
+}
+
+#footer-clear{
+  flex: 3;
+}
+
+
+
+
