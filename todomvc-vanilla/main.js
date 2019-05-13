@@ -2,6 +2,9 @@ const toggleAll = document.querySelector("#toggleall");
 const list = document.querySelector("#todoList");
 const markAll = document.querySelector("#markAll");
 const markAllIcon = document.querySelector("#markAll i");
+const footer = document.querySelector("#footer");
+const section = document.querySelector("#section");
+section.removeChild(footer);
 
 markAllIcon.addEventListener("click", () => {
   selectAllTodo();
@@ -33,21 +36,28 @@ const isChecked = listItem => {
 const showMarkAll = () => {
   let allTodoDone = document.querySelectorAll(".fas.fa-check:not(.hidden)");
   let allTodo = document.querySelectorAll(".listitem-container");
+  if (allTodo.length > 0) {
+    if (!section.contains(footer)) {
+      section.appendChild(footer);
+    }
+  }
   let counterElement = document.querySelector("#footer-counter");
   let clearCompleted = document.querySelector("#footer-clear");
 
   if (allTodo.length - allTodoDone.length === 1) {
     counterElement.innerText = "1 item left";
   } else {
-    counterElement.innerText = `${allTodo.length -
-      allTodoDone.length} items left`;
+    if (counterElement !== null) {
+      counterElement.innerText = `${allTodo.length -
+        allTodoDone.length} items left`;
+    }
   }
 
   if (allTodo.length > 0) {
     if (allTodoDone.length > 0) {
-      clearCompleted.hidden = false;
+      clearCompleted.classList.remove("hidden");
     } else {
-      clearCompleted.hidden = true;
+      clearCompleted.classList.add("hidden");
     }
     markAll.hidden = false;
     markAllIcon;
@@ -57,8 +67,13 @@ const showMarkAll = () => {
       markAllIcon.classList.remove("dark-arrow");
     }
   } else {
+    if (section.contains(footer)) {
+      section.removeChild(footer);
+    }
     markAll.hidden = true;
-    clearCompleted.hidden = true;
+    if (clearCompleted !== null) {
+      clearCompleted.classList.remove("hidden");
+    }
   }
 };
 
