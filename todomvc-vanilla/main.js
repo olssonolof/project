@@ -77,7 +77,7 @@ const showMarkAll = () => {
   }
 };
 
-const editToDoText = (todo, listitem) => {
+const editToDoText = todo => {
   todo.contentEditable = true;
   todo.classList.add("todo-edit");
   let button = todo.parentElement.lastChild;
@@ -123,7 +123,7 @@ const createListItem = () => {
 
   let label = document.createElement("label");
   label.addEventListener("dblclick", () => {
-    editToDoText(label, node);
+    editToDoText(label);
   });
   label.id = "todo-label";
 
@@ -132,7 +132,7 @@ const createListItem = () => {
       deleteToDo(node);
     } else {
       label.contentEditable = false;
-      node.classList.remove("todo-edit");
+      label.classList.remove("todo-edit");
     }
     button.classList.remove("z-index");
   });
