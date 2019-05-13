@@ -34,6 +34,8 @@ const showMarkAll = () => {
   let allTodoDone = document.querySelectorAll(".fas.fa-check:not(.hidden)");
   let allTodo = document.querySelectorAll(".listitem-container");
   let counterElement = document.querySelector("#footer-counter");
+  let clearCompleted = document.querySelector("#footer-clear");
+
   if (allTodo.length - allTodoDone.length === 1) {
     counterElement.innerText = "1 item left";
   } else {
@@ -41,7 +43,12 @@ const showMarkAll = () => {
       allTodoDone.length} items left`;
   }
 
-  if (list.childElementCount > 0) {
+  if (allTodo.length > 0) {
+    if (allTodoDone.length > 0) {
+      clearCompleted.hidden = false;
+    } else {
+      clearCompleted.hidden = true;
+    }
     markAll.hidden = false;
     markAllIcon;
     if (allTodoDone.length === allTodo.length) {
@@ -51,6 +58,7 @@ const showMarkAll = () => {
     }
   } else {
     markAll.hidden = true;
+    clearCompleted.hidden = true;
   }
 };
 
