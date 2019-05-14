@@ -146,6 +146,10 @@ i {
   visibility: hidden;
 }
 
+.display-none {
+  display: none;
+}
+
 footer {
   width: 100%;
   height: 30px;

@@ -1,15 +1,49 @@
+class todoSaveClass {
+  constructor(done, todoText) {
+    this.done = done;
+    this.todoText = todoText;
+  }
+}
+
 const toggleAll = document.querySelector("#toggleall");
 const list = document.querySelector("#todoList");
 const markAll = document.querySelector("#markAll");
 const markAllIcon = document.querySelector("#markAll i");
 const footer = document.querySelector("#footer");
 const section = document.querySelector("#section");
+let todoList = [];
+
 document
   .querySelector("#footer-clear")
   .firstChild.addEventListener("click", () => {
     clearCompleted();
   });
+
+document.querySelector("#footer-active").addEventListener("click", () => {
+  showActive();
+});
+
+document.querySelector("#footer-all").addEventListener("click", () => {
+  showAllTodo();
+});
+
+document.querySelector("#footer-completed").addEventListener("click", () => {
+  showCompleted();
+});
+
 section.removeChild(footer);
+
+window.addEventListener("hashchange", () => {
+  urlChange();
+});
+
+window.addEventListener("beforeunload", () => {
+  saveTodo();
+});
+
+window.addEventListener("load", () => {
+  loadTodo();
+});
 
 markAllIcon.addEventListener("click", () => {
   selectAllTodo();
@@ -128,7 +162,7 @@ const selectAllTodo = () => {
 
 showMarkAll();
 
-const createListItem = () => {
+const createListItem = (done = false) => {
   let node = document.createElement("li");
 
   node.classList = "listitem-container";
@@ -138,7 +172,9 @@ const createListItem = () => {
 
   let checker = document.createElement("i");
   checker.classList = "fas fa-check";
-  checker.classList.add("hidden");
+  if (!done) {
+    checker.classList.add("hidden");
+  }
   div.appendChild(checker);
 
   let label = document.createElement("label");
@@ -192,4 +228,54 @@ const clearCompleted = () => {
     x.closest("ul").removeChild(x.closest("li"));
   });
   showMarkAll();
+};
+
+const showActive = () => {
+  let todoNotDone = document.querySelectorAll(".fas.fa-check.hidden");
+  let allTodo = document.querySelectorAll(".listitem-container");
+  allTodo.forEach(x => x.classList.add("display-none"));
+  todoNotDone.forEach(x => x.closest("li").classList.remove("display-none"));
+};
+
+const showAllTodo = () => {
+  let allTodo = document.querySelectorAll(".listitem-container");
+  allTodo.forEach(x => x.classList.remove("display-none"));
+};
+
+const showCompleted = () => {
+  let allTodo = document.querySelectorAll(".listitem-container");
+  let todoDone = document.querySelectorAll(".fas.fa-check:not(.hidden)");
+  allTodo.forEach(x => x.classList.add("display-none"));
+  todoDone.forEach(x => x.closest("li").classList.remove("display-none"));
+};
+
+const urlChange = () => {
+  if (location.hash === "#/active") {
+    showActive();
+  } else if (location.hash === "#/") {
+    showAllTodo();
+  } else {
+    showCompleted();
+  }
+};
+
+const saveTodo = () => {
+  todoList = [];
+  let allTodo = document.querySelectorAll(".listitem-container");
+  allTodo.forEach(x => {
+    let done = false;
+    if (!x.firstChild.firstChild.classList.contains("hidden")) {
+      done = true;
+    }
+    let z = new todoSaveClass(done, x.children[1].innerText);
+    todoList.push(z);
+  });
+  localStorage.clear("list");
+  localStorage.setItem("list", JSON.stringify(todoList));
+};
+
+const loadTodo = () => {
+  let test = localStorage.getItem("list");
+  todoList = JSON.parse(test);
+  localStorage.clear("list");
 };
