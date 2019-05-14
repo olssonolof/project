@@ -189,9 +189,7 @@ const todoEditDone = node => {
 const clearCompleted = () => {
   let doneTodo = document.querySelectorAll(".fas.fa-check:not(.hidden)");
   doneTodo.forEach(x => {
-    x.parentElement.parentElement.parentElement.removeChild(
-      x.parentElement.parentElement
-    );
+    x.closest("ul").removeChild(x.closest("li"));
   });
   showMarkAll();
 };
