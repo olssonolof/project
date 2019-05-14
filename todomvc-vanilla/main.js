@@ -4,6 +4,11 @@ const markAll = document.querySelector("#markAll");
 const markAllIcon = document.querySelector("#markAll i");
 const footer = document.querySelector("#footer");
 const section = document.querySelector("#section");
+document
+  .querySelector("#footer-clear")
+  .firstChild.addEventListener("click", () => {
+    clearCompleted();
+  });
 section.removeChild(footer);
 
 markAllIcon.addEventListener("click", () => {
@@ -89,7 +94,7 @@ const editToDoText = todo => {
   todo.addEventListener("keypress", e => {
     key = e.charCode;
     if (key === 13) {
-      todoEditDone(todo.parentElement);
+      todo.blur();
     }
   });
   todo.classList.add("todo-edit");
@@ -179,4 +184,14 @@ const todoEditDone = node => {
     label.classList.remove("todo-edit");
   }
   button.classList.remove("z-index");
+};
+
+const clearCompleted = () => {
+  let doneTodo = document.querySelectorAll(".fas.fa-check:not(.hidden)");
+  doneTodo.forEach(x => {
+    x.parentElement.parentElement.parentElement.removeChild(
+      x.parentElement.parentElement
+    );
+  });
+  showMarkAll();
 };
