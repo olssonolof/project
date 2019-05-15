@@ -84,6 +84,7 @@ i {
 .listitemchecked {
   text-decoration-line: line-through;
   color: #a8a8a8;
+  transition: color 0.5s
 }
 
 .list-section {
