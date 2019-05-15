@@ -214,3 +214,15 @@ footer {
 #footer-completed {
   flex: 6;
 }
+
+.footer-border a:hover{
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+
+
+.footer-border a{
+  padding:4px;
+  
+}
