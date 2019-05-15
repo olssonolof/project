@@ -19,6 +19,16 @@ body {
   width: 500px;
 }
 
+@media screen and (max-width: 550px){
+  .main-section{
+    width: 100px;
+  }
+
+  .list-section{
+    width: 100px;
+  }
+}
+
 header h1 {
   font-size: 100px;
   color: rgba(175, 47, 47, 0.15);
