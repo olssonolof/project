@@ -283,4 +283,6 @@ const loadTodo = () => {
     done = x.done;
     createListItem(done);
   });
+  showMarkAll();
+  urlChange();
 };
