@@ -235,11 +235,19 @@ const showActive = () => {
   let allTodo = document.querySelectorAll(".listitem-container");
   allTodo.forEach(x => x.classList.add("display-none"));
   todoNotDone.forEach(x => x.closest("li").classList.remove("display-none"));
+  document.querySelector("#footer-completed a").classList.remove("outline");
+  document.querySelector("#footer-active a").classList.add("outline");
+  document.querySelector("#footer-all a").classList.remove("outline");
 };
 
 const showAllTodo = () => {
   let allTodo = document.querySelectorAll(".listitem-container");
   allTodo.forEach(x => x.classList.remove("display-none"));
+  if (document.querySelector("#section").contains(footer)) {
+    document.querySelector("#footer-completed a").classList.remove("outline");
+    document.querySelector("#footer-active a").classList.remove("outline");
+    document.querySelector("#footer-all a").classList.add("outline");
+  }
 };
 
 const showCompleted = () => {
@@ -247,15 +255,18 @@ const showCompleted = () => {
   let todoDone = document.querySelectorAll(".fas.fa-check:not(.hidden)");
   allTodo.forEach(x => x.classList.add("display-none"));
   todoDone.forEach(x => x.closest("li").classList.remove("display-none"));
+  document.querySelector("#footer-completed a").classList.add("outline");
+  document.querySelector("#footer-active a").classList.remove("outline");
+  document.querySelector("#footer-all a").classList.remove("outline");
 };
 
 const urlChange = () => {
   if (location.hash === "#/active") {
     showActive();
-  } else if (location.hash === "#/") {
-    showAllTodo();
-  } else {
+  } else if (location.hash === "#/completed") {
     showCompleted();
+  } else {
+    showAllTodo();
   }
 };
 
