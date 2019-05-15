@@ -5,7 +5,7 @@ class todoSaveClass {
   }
 }
 
-const toggleAll = document.querySelector("#toggleall");
+let toggleAll = document.querySelector("#toggleall");
 const list = document.querySelector("#todoList");
 const markAll = document.querySelector("#markAll");
 const markAllIcon = document.querySelector("#markAll i");
@@ -278,4 +278,9 @@ const loadTodo = () => {
   let test = localStorage.getItem("list");
   todoList = JSON.parse(test);
   localStorage.clear("list");
+  todoList.forEach(x => {
+    toggleAll.value = x.todoText;
+    done = x.done;
+    createListItem(done);
+  });
 };
