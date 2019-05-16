@@ -20,7 +20,6 @@ body {
   min-width: 337.5px;
 }
 
-
 header h1 {
   font-size: 100px;
   color: rgba(175, 47, 47, 0.15);
@@ -88,7 +87,7 @@ i {
 .listitemchecked {
   text-decoration-line: line-through;
   color: #a8a8a8;
-  transition: color 0.5s
+  transition: color 0.5s;
 }
 
 .list-section {
@@ -100,12 +99,12 @@ i {
   min-width: 337.5px;
 }
 
-@media screen and (max-width: 690px){
-  .main-section{
+@media screen and (max-width: 690px) {
+  .main-section {
     width: 100vw;
   }
-  
-  .list-section{
+
+  .list-section {
     width: 90vw;
     animation-name: sectionWidth;
     animation-iteration-count: 1;
@@ -113,16 +112,16 @@ i {
     animation-duration: 0.35s;
   }
 
-  @keyframes sectionWidth{
+  @keyframes sectionWidth {
     0% {
       width: 80vw;
     }
-    100%{
+    100% {
       width: 90vw;
     }
   }
 
-  .input-container{
+  .input-container {
     width: 90vw;
     animation-name: containerWidth;
     animation-iteration-count: 1;
@@ -130,29 +129,13 @@ i {
     animation-duration: 0.35s;
   }
 
-  @keyframes containerWidth{
+  @keyframes containerWidth {
     0% {
       width: 80vw;
     }
-    100%{
+    100% {
       width: 90vw;
     }
-  }
-
-
-}
-
-@media screen and (max-width: 375){
-  .main-section{
-
-  }
-
-  .list-section{
-
-  }
-
-  .input-container{
-
   }
 }
 
@@ -278,15 +261,14 @@ footer {
   flex: 6;
 }
 
-.footer-border a{
+.footer-border a {
   outline: 1px transparent;
   border-radius: 4px;
-  padding:4px;
+  padding: 4px;
   margin: 4px;
 }
 
-.footer-border a:hover{
-  
+.footer-border a:hover {
   box-shadow: 0 0 2px rgb(233, 199, 128);
   border-radius: 4px;
   cursor: pointer;
@@ -294,7 +276,7 @@ footer {
   padding: 4px;
 }
 
-.footer-border a:active{
+.footer-border a:active {
   box-shadow: 0 0 2px rgb(201, 141, 13);
   border-radius: 4px;
   cursor: pointer;
@@ -302,8 +284,6 @@ footer {
   padding: 4px;
 }
 
-.outline{
+.outline {
   box-shadow: 0 0 2px rgb(201, 141, 13);
 }
-
-
