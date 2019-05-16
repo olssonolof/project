@@ -16,18 +16,10 @@ body {
   margin-right: auto;
   align-items: center;
   flex-direction: column;
-  width: 500px;
+  width: 45em;
+  min-width: 337.5px;
 }
 
-@media screen and (max-width: 550px){
-  .main-section{
-    width: 100px;
-  }
-
-  .list-section{
-    width: 100px;
-  }
-}
 
 header h1 {
   font-size: 100px;
@@ -41,6 +33,7 @@ header h1 {
   align-items: center;
   background: white;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  min-width: 337.5px;
 }
 
 .input-container {
@@ -50,6 +43,7 @@ header h1 {
   border-style: solid;
   border-width: 0px 0px 1px 0px;
   border-color: #f1f1f1;
+  min-width: 337.5px;
 }
 
 .input-container input:focus {
@@ -102,7 +96,64 @@ i {
   margin-right: auto;
   align-items: center;
   flex-direction: column;
-  width: 500px;
+  width: 36em;
+  min-width: 337.5px;
+}
+
+@media screen and (max-width: 690px){
+  .main-section{
+    width: 100vw;
+  }
+  
+  .list-section{
+    width: 90vw;
+    animation-name: sectionWidth;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-duration: 0.35s;
+  }
+
+  @keyframes sectionWidth{
+    0% {
+      width: 80vw;
+    }
+    100%{
+      width: 90vw;
+    }
+  }
+
+  .input-container{
+    width: 90vw;
+    animation-name: containerWidth;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-duration: 0.35s;
+  }
+
+  @keyframes containerWidth{
+    0% {
+      width: 80vw;
+    }
+    100%{
+      width: 90vw;
+    }
+  }
+
+
+}
+
+@media screen and (max-width: 375){
+  .main-section{
+
+  }
+
+  .list-section{
+
+  }
+
+  .input-container{
+
+  }
 }
 
 .listitem-container {
