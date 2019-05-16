@@ -178,9 +178,15 @@ const createListItem = (done = false) => {
   div.appendChild(checker);
 
   let label = document.createElement("label");
-  label.addEventListener("dblclick", () => {
-    editToDoText(label);
-  });
+  if (window.matchMedia("(min-width: 690px)").matches) {
+    label.addEventListener("dblclick", () => {
+      editToDoText(label);
+    });
+  } else {
+    label.addEventListener("click", () => {
+      editToDoText(label);
+    });
+  }
   label.id = "todo-label";
 
   label.addEventListener("focusout", () => {
@@ -286,14 +292,16 @@ const saveTodo = () => {
 };
 
 const loadTodo = () => {
-  let test = localStorage.getItem("list");
-  todoList = JSON.parse(test);
-  localStorage.clear("list");
-  todoList.forEach(x => {
-    toggleAll.value = x.todoText;
-    done = x.done;
-    createListItem(done);
-  });
+  let loadedContent = localStorage.getItem("list");
+  if (loadedContent !== null) {
+    todoList = JSON.parse(loadedContent);
+    localStorage.clear("list");
+    todoList.forEach(x => {
+      toggleAll.value = x.todoText;
+      done = x.done;
+      createListItem(done);
+    });
+  }
   showMarkAll();
   urlChange();
 };

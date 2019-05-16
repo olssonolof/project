@@ -60,10 +60,6 @@ header h1 {
   color: rgb(88, 88, 88);
 }
 
-/* .input-container label{
-    flex: 1;
-} */
-
 .input-container input::placeholder {
   color: lightgray;
   font-style: italic;
@@ -102,6 +98,11 @@ i {
 @media screen and (max-width: 690px) {
   .main-section {
     width: 100vw;
+  }
+
+  #deleteButton i {
+    visibility: visible;
+    color: #cc9a9a;
   }
 
   .list-section {
