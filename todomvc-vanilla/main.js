@@ -214,6 +214,8 @@ const createListItem = (done = false) => {
   });
   node.appendChild(button);
   list.appendChild(node);
+
+  urlChange();
 };
 
 const todoEditDone = node => {
