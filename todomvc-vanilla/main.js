@@ -158,9 +158,8 @@ const selectAllTodo = () => {
     });
   }
   showMarkAll();
+  urlChange();
 };
-
-showMarkAll();
 
 const createListItem = (done = false) => {
   let node = document.createElement("li");
@@ -172,12 +171,12 @@ const createListItem = (done = false) => {
 
   let checker = document.createElement("i");
   checker.classList = "fas fa-check";
-  if (!done) {
-    checker.classList.add("hidden");
-  }
   div.appendChild(checker);
 
   let label = document.createElement("label");
+  if (!done) {
+    checker.classList.add("hidden");
+  } else label.classList.add("listitemchecked");
   if (window.matchMedia("(min-width: 690px)").matches) {
     label.addEventListener("dblclick", () => {
       editToDoText(label);
@@ -215,6 +214,7 @@ const createListItem = (done = false) => {
   node.appendChild(button);
   list.appendChild(node);
 
+  showMarkAll();
   urlChange();
 };
 
