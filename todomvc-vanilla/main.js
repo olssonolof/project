@@ -60,8 +60,8 @@ toggleAll.addEventListener("keypress", function(e) {
   let key = e.charCode;
   if (toggleAll.value.length != 0) {
     if (key === 13) {
+      easterEgg();
       createListItem();
-      showMarkAll();
     }
   }
 });
@@ -140,6 +140,15 @@ const deleteToDo = todo => {
   if (list.contains(todo)) {
     list.removeChild(todo);
     showMarkAll();
+  }
+};
+
+const easterEgg = () => {
+  if (toggleAll.value === "Do a barrel roll") {
+    document.body.classList.add("easteregg");
+    setTimeout(() => {
+      document.body.classList.remove("easteregg");
+    }, 2000);
   }
 };
 

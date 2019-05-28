@@ -288,3 +288,8 @@ footer {
 .outline {
   box-shadow: 0 0 2px rgb(201, 141, 13);
 }
+
+.easteregg {
+  transform: rotate(360deg);
+  transition: 2s;
+}
