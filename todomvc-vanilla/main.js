@@ -77,6 +77,7 @@ const isChecked = listItem => {
     label.classList.remove("listitemchecked");
   }
   showMarkAll();
+  urlChange();
 };
 
 const showMarkAll = () => {
