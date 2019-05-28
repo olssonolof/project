@@ -145,11 +145,11 @@ const deleteToDo = todo => {
 };
 
 const easterEgg = () => {
-  if (toggleAll.value === "Do a barrel roll") {
+  if (toggleAll.value.toLowerCase() === "do a barrel roll") {
     document.body.classList.add("easteregg");
     setTimeout(() => {
       document.body.classList.remove("easteregg");
-    }, 2000);
+    }, 1500);
   }
 };
 
